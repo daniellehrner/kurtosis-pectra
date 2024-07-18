@@ -28,7 +28,7 @@ Start the tests with:
 kurtosis run --enclave eth github.com/ethpandaops/ethereum-package --args-file network_params.yaml
 ```
 
-It will create output similar to at the end:
+The end of the created output will look similar to this:
 ```
 ========================================== User Services ==========================================
 UUID           Name                                             Ports                                         Status
@@ -42,7 +42,7 @@ daff4b0c75b4   cl-2-teku-nethermind                             http: 4000/tcp -
                                                                 metrics: 8008/tcp -> http://127.0.0.1:56526   
 ```
 
-Look for the `assertoor` service and enter its URL in your browser to see the test results. In the example it is `http://127.0.0.1:56616`.
+Look for the `assertoor` service and enter its URL in your browser to see the test results. In the example above it is `http://127.0.0.1:56616`.
 
 Once the tests are finished, you can stop the enclave with (will take a few minutes):
 ```
