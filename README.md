@@ -12,7 +12,7 @@ Important: To run the tests Docker will need at least 14 GB of memory. You can c
 brew install kurtosis-tech/tap/kurtosis-cli
 ```
 
-## Running the automatic tests
+## Starting the network
 Check that if the `eth` enclave already exists:
 ```
 kurtosis enclave ls
@@ -23,7 +23,7 @@ If it does, remove it with:
 kurtosis enclave rm -f eth
 ```
 
-Start the tests with:
+Start the network with:
 ```
 kurtosis run --enclave eth github.com/ethpandaops/ethereum-package --args-file network_params.yaml
 ```
@@ -41,8 +41,6 @@ d89066cbd3cf   apache                                           http: 80/tcp -> 
 daff4b0c75b4   cl-2-teku-nethermind                             http: 4000/tcp -> http://127.0.0.1:56528      RUNNING
                                                                 metrics: 8008/tcp -> http://127.0.0.1:56526   
 ```
-
-Look for the `assertoor` service and enter its URL in your browser to see the test results. In the example above it is `http://127.0.0.1:56616`.
 
 ## Manual testing
 
@@ -86,6 +84,16 @@ To access the block explorer look for `blockscout` in the list of services. It s
 732394dbb2e9   blockscout        http: 4000/tcp -> http://127.0.0.1:56750    RUNNING
 ```
 In the example above `http://127.0.0.1:56750` needs to be used as the block explorer int the browser.
+
+## Automatic tests
+
+The assertor service needs to be added into the `additional_services` section of the `network_params.yaml` file. The `network_params.yaml` file should look like this. Additionally a `assertoor_params` needs to be added in the same file with the tests. The network needs to be started afterwards to run the tests automatically.
+
+To see the results look for the `assertoor` user service after startup and enter its URL in your browser. In the example below the URL is `http://127.0.0.1:56616`:
+
+```
+3750fca05605   assertoor       http: 8080/tcp -> http://127.0.0.1:56616      RUNNING
+```
 
 ## Stopping the enclave
 
